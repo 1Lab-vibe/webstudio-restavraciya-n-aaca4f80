@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 213 30% 8%;
+    --foreground: 210 20% 97%;
+
+    --surface: 215 28% 13%;
+    --surface-elevated: 215 25% 17%;
+
+    --card: 215 28% 13%;
+    --card-foreground: 210 20% 97%;
+
+    --popover: 215 28% 13%;
+    --popover-foreground: 210 20% 97%;
+
+    --primary: 21 94% 53%;
+    --primary-foreground: 213 30% 8%;
+
+    --secondary: 215 25% 17%;
+    --secondary-foreground: 210 20% 97%;
+
+    --muted: 215 25% 17%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 188 86% 53%;
+    --accent-foreground: 213 30% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 97%;
+
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 21 94% 53%;
+
+    --radius: 0.625rem;
+
+    --shadow-elevated: 0 20px 50px -20px hsl(21 94% 53% / 0.35);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Bebas Neue', 'Manrope', system-ui, sans-serif;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-surface { background-color: hsl(var(--surface)); }
+  .bg-surface-elevated { background-color: hsl(var(--surface-elevated)); }
+  .text-balance { text-wrap: balance; }
+  .grid-lines {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@keyframes roof-draw {
+  0% { stroke-dashoffset: 600; }
+  60%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes tile-pop {
+  0%, 30% { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes spark {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.anim-roof path.outline { stroke-dasharray: 600; animation: roof-draw 2.6s ease-out forwards; }
+.anim-roof rect.tile { opacity: 0; animation: tile-pop 2.4s ease-out forwards; }
+.anim-roof circle.spark { animation: spark 2.2s ease-in-out infinite; }
