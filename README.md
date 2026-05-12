@@ -1,2 +1,3 @@
-# webstudio-restavraciya-n-aaca4f80
-Web Studio generated preview for РЕСТАВРАЦИЯ Н
+# Welcome to your Lovable project
+
+TODO: Document your project here
